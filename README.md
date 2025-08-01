@@ -31,7 +31,7 @@
 
 1. เปิด terminal ใช้คำสั่ง : git clone https://github.com/robojourney101/robot_stubby4j.git
 
-3. รัน Stubby4j (ต้องใช้ Java 8 ขึ้นไป):
+3. ใช้คำสั่งเพื่อรัน Stubby4j (ต้องใช้ Java 8 ขึ้นไป):
    ```bash
    java -jar stubby4j-7.6.1.jar -d stubs/stub.yaml
    ```
