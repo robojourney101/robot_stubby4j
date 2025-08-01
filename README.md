@@ -27,7 +27,7 @@
 
 ---
 
-## วิธีใช้งาน (Java)
+## วิธีใช้งานโค้ด
 
 1. เปิด terminal ใช้คำสั่ง : git clone https://github.com/robojourney101/robot_stubby4j.git
 
