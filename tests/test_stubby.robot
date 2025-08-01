@@ -8,7 +8,7 @@ ${BASE_URL}    http://localhost:8882
 Verify Stubby4j API_Hello
     [Documentation]    url: /hello 
     Create Session    stub    ${BASE_URL}
-    ${resp}=    GET On Session    stub    /hello
+    ${resp}    GET On Session    stub    /hello
     Should Be Equal As Integers    ${resp.status_code}    ${200}
     Should Be Equal As Strings     ${resp.reason}    OK
     Should Contain    ${resp.text}    Hello from Stubby4j
@@ -52,3 +52,10 @@ Verify Stubby4j API_Delete a user
     Should Be Equal As Strings     ${resp.reason}    OK
     Should Be Equal As Strings     ${resp.json()}[message]    API delete a user
     Log    ${resp.text}    console=${True}
+
+Verify Stubby4j API_Get Image
+    [Documentation]    url: /img/robojourney
+    Create Session    stub    ${BASE_URL}
+    ${resp}    GET On Session    stub    /img/robojourney
+    Should Be Equal As Integers    ${resp.status_code}    ${200}
+    Should Be Equal As Strings     ${resp.headers['Content-Type']}    image/png

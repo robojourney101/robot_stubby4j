@@ -49,3 +49,13 @@
     headers:
       content-type: application/json
     body: '{"status": "Success" , "message": "API delete a user"}'
+
+- description: This API will show image logo
+  request: 
+    method: GET
+    url: /img/robojourney
+  response:
+    status: 200
+    headers:
+      content-type: image/png
+    file: '../mock_resp/robojourney.png'
