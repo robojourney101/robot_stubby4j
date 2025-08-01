@@ -1,0 +1,336 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.3.2 (Python 3.10.10 on darwin)" generated="2025-08-01T10:33:01.277814" rpa="false" schemaversion="5">
+<suite id="s1" name="Test Stubby" source="/Users/macentro13/Downloads/robot-stubby-full/tests/test_stubby.robot">
+<test id="s1-t1" name="Verify Stubby4j API_Hello" line="8">
+<kw name="Create Session" owner="RequestsLibrary">
+<msg time="2025-08-01T10:33:01.390612" level="INFO">Creating Session using : alias=stub, url=http://localhost:8882, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<arg>stub</arg>
+<arg>${BASE_URL}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<status status="PASS" start="2025-08-01T10:33:01.390524" elapsed="0.000172"/>
+</kw>
+<kw name="GET On Session" owner="RequestsLibrary">
+<msg time="2025-08-01T10:33:01.396627" level="INFO">GET Request : url=http://localhost:8882/hello 
+ path_url=/hello 
+ headers={'User-Agent': 'python-requests/2.32.3', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg time="2025-08-01T10:33:01.396693" level="INFO">GET Response : url=http://localhost:8882/hello 
+ status=200, reason=OK 
+ headers={'Date': '2025-08-01 10:33:01+0700', 'Server': 'stubby4j/7.6.1 (HTTP stub server)', 'Content-Type': 'application/json', 'Cache-Control': 'no-cache, no-stage, must-revalidate', 'Pragma': 'no-cache', 'Expires': 'Thu, 01 Jan 1970 00:00:00 GMT', 'x-stubby-resource-id': '0', 'Vary': 'Accept-Encoding, User-Agent', 'Content-Encoding': 'gzip', 'Transfer-Encoding': 'chunked', 'X-Powered-By': 'Jetty(9.4.53.v20231009)'} 
+ body={"message": "Hello from Stubby4j!" , "name": "Kachain QA"} 
+ </msg>
+<msg time="2025-08-01T10:33:01.396765" level="INFO">${resp} = &lt;Response [200]&gt;</msg>
+<var>${resp}</var>
+<arg>stub</arg>
+<arg>/hello</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2025-08-01T10:33:01.390777" elapsed="0.006003"/>
+</kw>
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<arg>${resp.status_code}</arg>
+<arg>${200}</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="PASS" start="2025-08-01T10:33:01.396882" elapsed="0.000395"/>
+</kw>
+<kw name="Should Be Equal As Strings" owner="BuiltIn">
+<arg>${resp.reason}</arg>
+<arg>OK</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" start="2025-08-01T10:33:01.397368" elapsed="0.000241"/>
+</kw>
+<kw name="Should Contain" owner="BuiltIn">
+<arg>${resp.text}</arg>
+<arg>Hello from Stubby4j</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="PASS" start="2025-08-01T10:33:01.397755" elapsed="0.000212"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-08-01T10:33:01.398272" level="INFO">{"message": "Hello from Stubby4j!" , "name": "Kachain QA"}</msg>
+<arg>${resp.text}</arg>
+<arg>console=${True}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-08-01T10:33:01.398036" elapsed="0.000265"/>
+</kw>
+<doc>url: /hello</doc>
+<status status="PASS" start="2025-08-01T10:33:01.390138" elapsed="0.008233"/>
+</test>
+<test id="s1-t2" name="Verify Stubby4j API_List user" line="17">
+<kw name="Create Session" owner="RequestsLibrary">
+<msg time="2025-08-01T10:33:01.398737" level="INFO">Creating Session using : alias=stub, url=http://localhost:8882, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<arg>stub</arg>
+<arg>${BASE_URL}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<status status="PASS" start="2025-08-01T10:33:01.398659" elapsed="0.000150"/>
+</kw>
+<kw name="GET On Session" owner="RequestsLibrary">
+<msg time="2025-08-01T10:33:01.401369" level="INFO">GET Request : url=http://localhost:8882/list/users 
+ path_url=/list/users 
+ headers={'User-Agent': 'python-requests/2.32.3', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg time="2025-08-01T10:33:01.401408" level="INFO">GET Response : url=http://localhost:8882/list/users 
+ status=200, reason=OK 
+ headers={'Date': '2025-08-01 10:33:01+0700', 'Server': 'stubby4j/7.6.1 (HTTP stub server)', 'Content-Type': 'application/json', 'Cache-Control': 'no-cache, no-stage, must-revalidate', 'Pragma': 'no-cache', 'Expires': 'Thu, 01 Jan 1970 00:00:00 GMT', 'x-stubby-resource-id': '1', 'Vary': 'Accept-Encoding, User-Agent', 'Content-Encoding': 'gzip', 'Transfer-Encoding': 'chunked', 'X-Powered-By': 'Jetty(9.4.53.v20231009)'} 
+ body=[
+  {
+    "userId": 1,
+    "id": 1,
+    "username": "Kachain.a",
+    "completed": true
+  },
+  {
+    "userId": 2,
+    "id": 2,
+    "username": "Johnny.j",
+    "completed": false
+  },
+  {
+    "userId": 3,
+    "id": 3,
+    "username": "Fuji,j",
+    "completed": false
+  }
+] 
+ </msg>
+<msg time="2025-08-01T10:33:01.401469" level="INFO">${resp} = &lt;Response [200]&gt;</msg>
+<var>${resp}</var>
+<arg>stub</arg>
+<arg>/list/users</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2025-08-01T10:33:01.398874" elapsed="0.002607"/>
+</kw>
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<arg>${resp.status_code}</arg>
+<arg>${200}</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="PASS" start="2025-08-01T10:33:01.401566" elapsed="0.000365"/>
+</kw>
+<kw name="Should Be Equal As Strings" owner="BuiltIn">
+<arg>${resp.reason}</arg>
+<arg>OK</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" start="2025-08-01T10:33:01.402005" elapsed="0.000222"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-08-01T10:33:01.402528" level="INFO">[
+  {
+    "userId": 1,
+    "id": 1,
+    "username": "Kachain.a",
+    "completed": true
+  },
+  {
+    "userId": 2,
+    "id": 2,
+    "username": "Johnny.j",
+    "completed": false
+  },
+  {
+    "userId": 3,
+    "id": 3,
+    "username": "Fuji,j",
+    "completed": false
+  }
+]</msg>
+<arg>${resp.text}</arg>
+<arg>console=${True}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-08-01T10:33:01.402301" elapsed="0.000261"/>
+</kw>
+<doc>url: /list/users</doc>
+<status status="PASS" start="2025-08-01T10:33:01.398486" elapsed="0.004142"/>
+</test>
+<test id="s1-t3" name="Verify Stubby4j API_Ceate a user" line="25">
+<kw name="Create Session" owner="RequestsLibrary">
+<msg time="2025-08-01T10:33:01.402925" level="INFO">Creating Session using : alias=stub, url=http://localhost:8882, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<arg>stub</arg>
+<arg>${BASE_URL}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<status status="PASS" start="2025-08-01T10:33:01.402860" elapsed="0.000133"/>
+</kw>
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-08-01T10:33:01.403170" level="INFO">${headers} = {'Content-Type': 'application/json'}</msg>
+<var>${headers}</var>
+<arg>Content-Type=application/json</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-08-01T10:33:01.403057" elapsed="0.000126"/>
+</kw>
+<kw name="POST On Session" owner="RequestsLibrary">
+<msg time="2025-08-01T10:33:01.405789" level="INFO">POST Request : url=http://localhost:8882/user 
+ path_url=/user 
+ headers={'User-Agent': 'python-requests/2.32.3', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Content-Length': '30'} 
+ body=b'"{\\"username\\": \\"Minnie.m\\"}"' 
+ </msg>
+<msg time="2025-08-01T10:33:01.405822" level="INFO">POST Response : url=http://localhost:8882/user 
+ status=201, reason=Created 
+ headers={'Date': '2025-08-01 10:33:01+0700', 'Server': 'stubby4j/7.6.1 (HTTP stub server)', 'Content-Type': 'application/json', 'Cache-Control': 'no-cache, no-stage, must-revalidate', 'Pragma': 'no-cache', 'Expires': 'Thu, 01 Jan 1970 00:00:00 GMT', 'x-stubby-resource-id': '2', 'Transfer-Encoding': 'chunked', 'X-Powered-By': 'Jetty(9.4.53.v20231009)'} 
+ body={
+  "userId": 101,
+  "id": 101,
+  "username": "Minnie.m",
+  "completed": true
+} 
+ </msg>
+<msg time="2025-08-01T10:33:01.405909" level="INFO">${resp} = &lt;Response [201]&gt;</msg>
+<var>${resp}</var>
+<arg>stub</arg>
+<arg>/user</arg>
+<arg>json={"username": "Minnie.m"}</arg>
+<arg>headers=${headers}</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2025-08-01T10:33:01.403240" elapsed="0.002683"/>
+</kw>
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<arg>${resp.status_code}</arg>
+<arg>${201}</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="PASS" start="2025-08-01T10:33:01.406001" elapsed="0.000323"/>
+</kw>
+<kw name="Should Be Equal As Strings" owner="BuiltIn">
+<arg>${resp.reason}</arg>
+<arg>Created</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" start="2025-08-01T10:33:01.406393" elapsed="0.000261"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-08-01T10:33:01.406927" level="INFO">{
+  "userId": 101,
+  "id": 101,
+  "username": "Minnie.m",
+  "completed": true
+}</msg>
+<arg>${resp.text}</arg>
+<arg>console=${True}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-08-01T10:33:01.406714" elapsed="0.000245"/>
+</kw>
+<doc>url: /user/1</doc>
+<status status="PASS" start="2025-08-01T10:33:01.402711" elapsed="0.004309"/>
+</test>
+<test id="s1-t4" name="Verify Stubby4j API_Update a user" line="36">
+<kw name="Create Session" owner="RequestsLibrary">
+<msg time="2025-08-01T10:33:01.407802" level="INFO">Creating Session using : alias=stub, url=http://localhost:8882, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<arg>stub</arg>
+<arg>${BASE_URL}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<status status="PASS" start="2025-08-01T10:33:01.407590" elapsed="0.000330"/>
+</kw>
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-08-01T10:33:01.408096" level="INFO">${headers} = {'Content-Type': 'application/json'}</msg>
+<var>${headers}</var>
+<arg>Content-Type=application/json</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-08-01T10:33:01.407999" elapsed="0.000110"/>
+</kw>
+<kw name="PUT On Session" owner="RequestsLibrary">
+<msg time="2025-08-01T10:33:01.410367" level="INFO">PUT Request : url=http://localhost:8882/user/101 
+ path_url=/user/101 
+ headers={'User-Agent': 'python-requests/2.32.3', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Content-Length': '30'} 
+ body=b'"{\\"username\\": \\"Minjee.j\\"}"' 
+ </msg>
+<msg time="2025-08-01T10:33:01.410401" level="INFO">PUT Response : url=http://localhost:8882/user/101 
+ status=200, reason=OK 
+ headers={'Date': '2025-08-01 10:33:01+0700', 'Server': 'stubby4j/7.6.1 (HTTP stub server)', 'Content-Type': 'application/json', 'Cache-Control': 'no-cache, no-stage, must-revalidate', 'Pragma': 'no-cache', 'Expires': 'Thu, 01 Jan 1970 00:00:00 GMT', 'x-stubby-resource-id': '3', 'Transfer-Encoding': 'chunked', 'X-Powered-By': 'Jetty(9.4.53.v20231009)'} 
+ body={"status": "Success" , "message": "API update a user" , "updated: true" , "username" : "Minjee.j"} 
+ </msg>
+<msg time="2025-08-01T10:33:01.410461" level="INFO">${resp} = &lt;Response [200]&gt;</msg>
+<var>${resp}</var>
+<arg>stub</arg>
+<arg>/user/101</arg>
+<arg>json={"username": "Minjee.j"}</arg>
+<arg>headers=${headers}</arg>
+<doc>Sends a PUT request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2025-08-01T10:33:01.408171" elapsed="0.002302"/>
+</kw>
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<arg>${resp.status_code}</arg>
+<arg>${200}</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="PASS" start="2025-08-01T10:33:01.410552" elapsed="0.000334"/>
+</kw>
+<kw name="Should Be Equal As Strings" owner="BuiltIn">
+<arg>${resp.reason}</arg>
+<arg>OK</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" start="2025-08-01T10:33:01.410956" elapsed="0.000204"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-08-01T10:33:01.411543" level="INFO">{"status": "Success" , "message": "API update a user" , "updated: true" , "username" : "Minjee.j"}</msg>
+<arg>${resp.text}</arg>
+<arg>console=${True}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-08-01T10:33:01.411231" elapsed="0.000346"/>
+</kw>
+<doc>url: /user/1</doc>
+<status status="PASS" start="2025-08-01T10:33:01.407103" elapsed="0.004538"/>
+</test>
+<test id="s1-t5" name="Verify Stubby4j API_Delete a user" line="47">
+<kw name="Create Session" owner="RequestsLibrary">
+<msg time="2025-08-01T10:33:01.411941" level="INFO">Creating Session using : alias=stub, url=http://localhost:8882, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<arg>stub</arg>
+<arg>${BASE_URL}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<status status="PASS" start="2025-08-01T10:33:01.411876" elapsed="0.000128"/>
+</kw>
+<kw name="DELETE On Session" owner="RequestsLibrary">
+<msg time="2025-08-01T10:33:01.413814" level="INFO">DELETE Request : url=http://localhost:8882/user/101 
+ path_url=/user/101 
+ headers={'User-Agent': 'python-requests/2.32.3', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '0'} 
+ body=None 
+ </msg>
+<msg time="2025-08-01T10:33:01.413844" level="INFO">DELETE Response : url=http://localhost:8882/user/101 
+ status=200, reason=OK 
+ headers={'Date': '2025-08-01 10:33:01+0700', 'Server': 'stubby4j/7.6.1 (HTTP stub server)', 'Content-Type': 'application/json', 'Cache-Control': 'no-cache, no-stage, must-revalidate', 'Pragma': 'no-cache', 'Expires': 'Thu, 01 Jan 1970 00:00:00 GMT', 'x-stubby-resource-id': '4', 'Transfer-Encoding': 'chunked', 'X-Powered-By': 'Jetty(9.4.53.v20231009)'} 
+ body={"status": "Success" , "message": "API delete a user"} 
+ </msg>
+<msg time="2025-08-01T10:33:01.413893" level="INFO">${resp} = &lt;Response [200]&gt;</msg>
+<var>${resp}</var>
+<arg>stub</arg>
+<arg>/user/101</arg>
+<doc>Sends a DELETE request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2025-08-01T10:33:01.412063" elapsed="0.001842"/>
+</kw>
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<arg>${resp.status_code}</arg>
+<arg>${200}</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="PASS" start="2025-08-01T10:33:01.413976" elapsed="0.000359"/>
+</kw>
+<kw name="Should Be Equal As Strings" owner="BuiltIn">
+<arg>${resp.reason}</arg>
+<arg>OK</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" start="2025-08-01T10:33:01.414416" elapsed="0.000241"/>
+</kw>
+<kw name="Should Be Equal As Strings" owner="BuiltIn">
+<arg>${resp.json()}[message]</arg>
+<arg>API delete a user</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" start="2025-08-01T10:33:01.414724" elapsed="0.000227"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-08-01T10:33:01.415241" level="INFO">{"status": "Success" , "message": "API delete a user"}</msg>
+<arg>${resp.text}</arg>
+<arg>console=${True}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-08-01T10:33:01.415019" elapsed="0.000253"/>
+</kw>
+<doc>url: /list/users</doc>
+<status status="PASS" start="2025-08-01T10:33:01.411724" elapsed="0.003608"/>
+</test>
+<status status="PASS" start="2025-08-01T10:33:01.278532" elapsed="0.137028"/>
+</suite>
+<statistics>
+<total>
+<stat pass="5" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat name="Test Stubby" id="s1" pass="5" fail="0" skip="0">Test Stubby</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

@@ -1,0 +1,20 @@
+[
+  {
+    "userId": 1,
+    "id": 1,
+    "username": "Kachain.a",
+    "completed": true
+  },
+  {
+    "userId": 2,
+    "id": 2,
+    "username": "Johnny.j",
+    "completed": false
+  },
+  {
+    "userId": 3,
+    "id": 3,
+    "username": "Fuji,j",
+    "completed": false
+  }
+]

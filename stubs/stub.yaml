@@ -1,0 +1,50 @@
+- description: First API Hello QA
+  request:
+    method: GET
+    url: /hello
+  response:
+    status: 200
+    headers:
+      content-type: application/json
+    body: '{"message": "Hello from Stubby4j!" , "name": "Kachain QA"}'
+
+- description: This API will List users
+  request:
+    method: GET
+    url: /list/users
+  response:
+    status: 200
+    latency: 3000
+    headers:
+      content-type: application/json
+    file: '../mock_resp/resp_user.json'
+
+- description: This API will create a user
+  request:
+    method: POST
+    url: ^/user$
+  response:
+    status: 201
+    headers:
+      content-type: application/json
+    file: '../mock_resp/resp_create_user.json'
+
+- description: This API will update a user
+  request: 
+    method: PUT
+    url: /user/101
+  response:
+    status: 200
+    headers:
+      content-type: application/json
+    body: '{"status": "Success" , "message": "API update a user" , "updated: true" , "username" : "Minjee.j"}'
+
+- description: This API will delete a user
+  request: 
+    method: DELETE
+    url: /user/101
+  response:
+    status: 200
+    headers:
+      content-type: application/json
+    body: '{"status": "Success" , "message": "API delete a user"}'
